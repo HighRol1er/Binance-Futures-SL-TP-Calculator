@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SL/TP Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+
+      <!-- Header: direction toggle + detected price -->
+      <div class="header">
+        <button id="dir-switch" class="dir-switch dir-switch--long">
+          <span class="dir-switch__track">
+            <span class="dir-switch__thumb"></span>
+          </span>
+          <span id="dir-switch-label" class="dir-switch__label">LONG</span>
+        </button>
+        <div class="price-display">
+          <span class="price-label">감지된 가격</span>
+          <span id="current-price" class="price-value">—</span>
+        </div>
+      </div>
+
+      <!-- Settings -->
+      <div class="settings">
+        <div class="setting-row">
+          <label for="sl-pct">SL %</label>
+          <input id="sl-pct" type="number" min="0.01" max="99.99" step="0.01" value="1" />
+          <label for="tp-pct">TP %</label>
+          <input id="tp-pct" type="number" min="0.01" max="99.99" step="0.01" value="1" />
+        </div>
+        <div class="setting-row">
+          <label for="fee-pct">Fee %</label>
+          <input id="fee-pct" type="number" min="0" max="10" step="0.001" value="0.05" />
+          <span class="fee-hint">taker 기준</span>
+        </div>
+        <button id="save-btn" class="btn-save">저장</button>
+        <span id="save-msg" class="save-msg"></span>
+      </div>
+
+      <!-- Results: SL / TP -->
+      <div class="results">
+        <div class="result-card result-card--sl">
+          <div class="result-header">
+            <span class="result-label">SL Price</span>
+            <span id="sl-pct-display" class="result-pct"></span>
+          </div>
+          <div class="result-body">
+            <span id="sl-value" class="result-value">—</span>
+            <button id="copy-sl" class="btn-copy">복사</button>
+          </div>
+        </div>
+
+        <div class="result-card result-card--tp">
+          <div class="result-header">
+            <span class="result-label">TP Price</span>
+            <span id="tp-pct-display" class="result-pct"></span>
+          </div>
+          <div class="result-body">
+            <span id="tp-value" class="result-value">—</span>
+            <button id="copy-tp" class="btn-copy">복사</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats: Break Even / R:R / EV -->
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Break Even</span>
+            <button id="copy-be" class="btn-copy btn-copy--sm">복사</button>
+          </div>
+          <span id="be-value" class="stat-value">—</span>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-item">
+            <span class="stat-label">R : R</span>
+            <span id="rr-value" class="stat-value">—</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">기댓값 (EV)</span>
+            <span id="ev-value" class="stat-value">—</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">최소 승률</span>
+            <span id="minwr-value" class="stat-value">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div id="status-footer" class="footer">Binance Futures 페이지를 열어주세요</div>
+
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

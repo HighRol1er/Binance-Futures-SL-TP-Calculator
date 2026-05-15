@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Binance Futures SL/TP Calculator",
+  "version": "1.0.0",
+  "description": "바이낸스 선물 Price 입력 시 SL/TP 자동 계산",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    },
+    "default_title": "SL/TP Calculator"
+  },
+  "side_panel": {
+    "default_path": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["storage", "sidePanel"],
+  "host_permissions": ["https://www.binance.com/*"],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.binance.com/en/futures/*",
+        "https://www.binance.com/futures/*",
+        "https://www.binance.com/*/futures/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

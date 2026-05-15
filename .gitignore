@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Chrome extension 배포용 zip (직접 만들 경우)
+*.zip
+*.crx
